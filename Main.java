@@ -38,6 +38,9 @@ public class Main {
         System.out.println(resultSb.toString());
     }
 
+    //#########################################################
+    // THESE ARE HELPER METHODS
+
     public static int getParentIdx(int idx){
         return (idx - 1)/2;
     }
@@ -50,10 +53,14 @@ public class Main {
         return (idx * 2) + 1;
     }
 
+    // Does node have a child?
     public static boolean childPresent(int idx, int len){
         return getLeftChild(idx) < len;
     }
 
+    //#######################################################
+
+    // This heapifies up starting with the last element added to the list
     public static void heapifyup(ArrayList<Integer> arr){
         int idx = arr.size()-1;
 
@@ -71,6 +78,8 @@ public class Main {
         }
     }
 
+
+    // This is another helper method that returns the index of the smallest child
     public static int getSmallerChildIdx(ArrayList<Integer> lst, int idx){
         if(getRightChild(idx) >= lst.size()){
             return getLeftChild(idx);
@@ -89,6 +98,8 @@ public class Main {
         }
     }
 
+
+    // This methods heapifies down starting from the root node
     public static void heapifydown(ArrayList<Integer> arr){
         int idx = 0;
 
@@ -107,6 +118,7 @@ public class Main {
         }
     }
 
+    // This method returns the smallest element from the heap (root node) and then calls on heapifydown
     public static int getMin(ArrayList<Integer> arr){
 
         int minimum = arr.get(0);
@@ -120,16 +132,23 @@ public class Main {
     }
 
     
+    // This sort algorithm has a runtime of O((k+1) * logk + (n-k+1) * 2logk + (k+1) * logk)
+    // So is has a simplified runtime of O(n*logk)
     public static void sort(int[] numbers, int k) {
+        
+        // an empty array to save sorted list elements
         int[] newNumbers = new int[numbers.length];
+
+        // This will serve as the heap
         ArrayList<Integer> lst = new ArrayList<Integer>();
 
-       for(int i=0; i<=k; i++){
+        // First create a heap of size k + 1
+        for(int i=0; i<=k; i++){
             lst.add(numbers[i]);
             heapifyup(lst);
         }
         
-
+        // Now remove the smallest node, heapifydown, then add a node, and then heapifyup
         int count = 0;
         for(int i=k+1; i<numbers.length; i++){
             newNumbers[count] = getMin(lst);
@@ -139,6 +158,7 @@ public class Main {
             heapifyup(lst);
         }
 
+        // k+1 nodes are left so remove smallest node, then heapifydown
         int lstSize = lst.size();
         for(int i=0; i<lstSize; i++){
             newNumbers[count] = getMin(lst);
