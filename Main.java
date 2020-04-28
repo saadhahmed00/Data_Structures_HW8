@@ -51,7 +51,7 @@ public class Main {
     }
 
     public static boolean childPresent(int idx, int len){
-        return getLeftChild(idx) <= len;
+        return getLeftChild(idx) < len;
     }
 
    /* public static int[] heapify(int[] array){
@@ -114,6 +114,7 @@ public class Main {
 
         while(childPresent(idx, arr.size())){
             int smallChildIdx = getSmallerChildIdx(arr, idx);
+            //System.out.println(smallChildIdx);
             int child = arr.get(smallChildIdx);
             int parent = arr.get(idx);
 
@@ -152,7 +153,7 @@ public class Main {
             lst.add(numbers[i]);
             heapifyup(lst);
         }
-        System.out.println(lst);
+        
 
         int count = 0;
         for(int i=k+1; i<numbers.length; i++){
@@ -172,16 +173,21 @@ public class Main {
 
         int lstSize = lst.size();
         for(int i=0; i<lstSize; i++){
+            //System.out.println(lst);
             newNumbers[count] = getMin(lst);
             numbers[count] = newNumbers[count];
             count++;
+            //System.out.println("lap");
             
         } 
        
        //System.out.println(Arrays.toString(newNumbers));
        //System.out.println(lst);
        //numbers = newNumbers.clone();
-        // passed 2 cases
+
+        //#################################
+        // PASSED ALL TEST CASES
+        //#################################
 
         // TODO implement this function
         
