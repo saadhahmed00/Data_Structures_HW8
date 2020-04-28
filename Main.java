@@ -1,6 +1,5 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -58,7 +57,7 @@ public class Main {
         return getLeftChild(idx) < len;
     }
 
-    //#######################################################
+    //########################################################
 
     // This heapifies up starting with the last element added to the list
     public static void heapifyup(ArrayList<Integer> arr){
@@ -105,7 +104,6 @@ public class Main {
 
         while(childPresent(idx, arr.size())){
             int smallChildIdx = getSmallerChildIdx(arr, idx);
-            //System.out.println(smallChildIdx);
             int child = arr.get(smallChildIdx);
             int parent = arr.get(idx);
 
@@ -135,7 +133,7 @@ public class Main {
     // This sort algorithm has a runtime of O((k+1) * logk + (n-k+1) * 2logk + (k+1) * logk)
     // So is has a simplified runtime of O(n*logk)
     public static void sort(int[] numbers, int k) {
-        
+
         // an empty array to save sorted list elements
         int[] newNumbers = new int[numbers.length];
 
