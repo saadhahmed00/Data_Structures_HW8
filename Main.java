@@ -54,26 +54,6 @@ public class Main {
         return getLeftChild(idx) < len;
     }
 
-   /* public static int[] heapify(int[] array){
-        
-        for(int i=array.length-1; i>=0; i--){
-            if(childPresent(i, array.length) && (array[i]>array[getLeftChild(i)] || array[i]>array[getRightChild(i)])){
-                if(array[getLeftChild(i)] < array[getRightChild(i)]){
-                    int temp = array[getLeftChild(i)];
-                    array[getLeftChild(i)] = array[i];
-                    array[i] = temp;
-                }
-                else{
-                    int temp = array[getRightChild(i)];
-                    array[getRightChild(i)] = array[i];
-                    array[i] = temp;
-                }
-            }
-        }
-
-        return array;
-    } */
-
     public static void heapifyup(ArrayList<Integer> arr){
         int idx = arr.size()-1;
 
@@ -128,9 +108,6 @@ public class Main {
     }
 
     public static int getMin(ArrayList<Integer> arr){
-        /*if(arr.size() <= 0){
-            return null;
-        } */
 
         int minimum = arr.get(0);
         arr.set(0, arr.get(arr.size()-1));
@@ -145,8 +122,6 @@ public class Main {
     
     public static void sort(int[] numbers, int k) {
         int[] newNumbers = new int[numbers.length];
-
-        //ArrayList<Integer> newNumbers1 = new ArrayList<Integer>(numbers.length);
         ArrayList<Integer> lst = new ArrayList<Integer>();
 
        for(int i=0; i<=k; i++){
@@ -157,39 +132,20 @@ public class Main {
 
         int count = 0;
         for(int i=k+1; i<numbers.length; i++){
-            //System.out.println("list before cleave: " + lst);
             newNumbers[count] = getMin(lst);
             numbers[count] = newNumbers[count];
-            //System.out.println("cleave " + newNumbers[count]);
-            //System.out.println(lst);
             count++;
-            //System.out.println(numbers[i]);
             lst.add(numbers[i]);
-            //System.out.println(lst);
             heapifyup(lst);
-            //System.out.println(lst);
-            //break;
         }
 
         int lstSize = lst.size();
         for(int i=0; i<lstSize; i++){
-            //System.out.println(lst);
             newNumbers[count] = getMin(lst);
             numbers[count] = newNumbers[count];
             count++;
-            //System.out.println("lap");
             
-        } 
-       
-       //System.out.println(Arrays.toString(newNumbers));
-       //System.out.println(lst);
-       //numbers = newNumbers.clone();
-
-        //#################################
-        // PASSED ALL TEST CASES
-        //#################################
-
-        // TODO implement this function
+        }
         
     }
 }
