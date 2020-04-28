@@ -181,6 +181,7 @@ public class Main {
        //System.out.println(Arrays.toString(newNumbers));
        //System.out.println(lst);
        //numbers = newNumbers.clone();
+        // passed 2 cases
 
         // TODO implement this function
         
